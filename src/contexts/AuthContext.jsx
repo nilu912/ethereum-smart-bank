@@ -32,8 +32,18 @@ export const AuthProvider = ({ children }) => {
         return;
       }
       const provider = new ethers.BrowserProvider(window.ethereum);
+      const signer = await provider.getSigner();
       const wallet = await provider.send("eth_requestAccounts", []);
+
+      const contractInstance = new ethers.Contract(
+        contractAddress,
+        contractABI.abi,
+        signer
+      );
+      // checkOwner(contractInstance);
       setAccount(wallet[0]);
+      setContract(contractInstance);
+  
     } catch (error) {
       console.error(error);
     }

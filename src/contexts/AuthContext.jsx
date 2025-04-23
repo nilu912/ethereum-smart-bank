@@ -10,20 +10,20 @@ export const AuthProvider = ({ children }) => {
   const [account, setAccount] = useState(null);
   const [contract, setContract] = useState(null);
 
-  useEffect(() => {
-    const contractFetch = async () => {
-    const provider = new ethers.BrowserProvider(window.ethereum);
-    const signer = await provider.getSigner();
-    const contractInstance = new ethers.Contract(
-      contractAddress,
-      contractABI.abi,
-      signer
-    );
-    // checkOwner(contractInstance);
-    setContract(contractInstance);
-  }
-  contractFetch();
-  }, [account]);
+  // useEffect(() => {
+  //   const contractFetch = async () => {
+  //   const provider = new ethers.BrowserProvider(window.ethereum);
+  //   const signer = await provider.getSigner();
+  //   const contractInstance = new ethers.Contract(
+  //     contractAddress,
+  //     contractABI.abi,
+  //     signer
+  //   );
+  //   // checkOwner(contractInstance);
+  //   setContract(contractInstance);
+  // }
+  // contractFetch();
+  // }, [account]);
 
   const connectWallet = async () => {
     try {
